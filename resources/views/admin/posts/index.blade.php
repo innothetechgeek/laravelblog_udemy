@@ -354,7 +354,11 @@
                                             <th scope="row">
                                                 <div class="media align-items-center">
                                                     <a href="#" class="avatar  mr-3">
-                                                        <img width = '60' height = '48' src="../../post_images/post_19/alesia-kazantceva-VWcPlbHglYc-unsplash.jpg" />
+                                                        @if($post->image)
+                                                            <img width = '60' height = '48' src='{{ asset("post_images/$post->image")}}' alt="post-title" />
+                                                        @else
+                                                            <img width = '60' height = '48' src='{{ asset("assets/frontend/images/posts/post-md-2.jpg")}}' alt="post-title" />
+                                                        @endif
                                                     </a>
                                                     <div class="media-body">
                                                         <span class="name mb-0 text-sm">{{$post->title}}</span>
@@ -373,7 +377,13 @@
                                             <td style="column-width: 50px;">
                                             <span class="badge badge-dot mr-4">
                                                 <i class="bg-success"></i>
-                                                    <span class="status">Yes</span>
+                                                    <span class="status">
+                                                        @if($post->is_featured)
+                                                            Yes
+                                                        @else
+                                                            No
+                                                        @endif
+                                                    </span>
                                                 </span>
                                             </td>
                                             <td style="column-width: 80px;">
@@ -385,10 +395,10 @@
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="{{ url('post/edit') }}/1">Edit</a>
+                                                        <a class="dropdown-item" href="{{ url('post/edit') }}/{{$post->id}}">Edit</a>
                                                         <a class="dropdown-item" href="{{ url('post/delete') }}/{{$post->id}}">Delete</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-featured&post-id=19">Mark as featured</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=19">Mark as unfeatured</a>
+                                                        <a class="dropdown-item" href="{{ url('admin/post/markasfeatured') }}/{{$post->id}}">Mark as featured</a>
+                                                        <a class="dropdown-item" href="{{ url('admin/post/markasunfeatured') }}/{{$post->id}}">Mark as unfeatured</a>
                                                     </div>
                                                 </div>
                                             </td>

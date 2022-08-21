@@ -334,10 +334,14 @@
                                 </div>
                                 <div class="pl-lg-4 ">
                                     <label class="form-control-label ">Upload Post image</label>
-                                    <div class="input-group">
+                                    <div class="input-group mb-3">
                                         <input type="file" name="post_image" class="form-control">
                                     </div>
-                                    <img width = "150" height = "100" src="" />
+                                    @if($post->image)
+                                        <img width = "150" height = "100" src='{{ asset("post_images/$post->image")}}' alt="post-title" />
+                                    @else
+                                        <img width = "150" height = "100" src='{{ asset("assets/frontend/images/posts/post-md-2.jpg")}}' alt="post-title" />
+                                    @endif
                                 </div>
                                 <div class="d-flex mt-3 justify-content-end">
                                     <a href="{{ url('admin/posts') }}" class="btn btn-secondary">Back</a>

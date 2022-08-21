@@ -31,10 +31,12 @@ Route::get('admin/post/add', function(){
 });
 
 Route::post('post/store', [PostController::class, 'store']);
-Route::get('admin/posts', [PostController::class, 'index']);
+Route::get('admin/posts', [PostController::class, 'adminIndex']);
 Route::get('post/edit/{id}', [PostController::class, 'edit']);
 Route::post('post/update/{id}', [PostController::class, 'update']);
 Route::get('post/delete/{id}',[PostController::class, 'delete']);
+Route::get('admin/post/markasfeatured/{id}',[PostController::class, 'markAsFeatured']);
+Route::get('admin/post/markasunfeatured/{id}',[PostController::class, 'markAsUnfeatured']);
 
 /* categories */
 Route::get('admin/categories',[CategoryController::class, 'index']);

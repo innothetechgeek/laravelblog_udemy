@@ -184,41 +184,36 @@
                             <!-- post comments -->
                             <div class="comments bordered padding-30 rounded">
                                 <ul class="comments">
-                                    <!-- comment item -->
-                                    <li class="comment rounded">
-                                        <div class="thumb">
-                                            <img src="{{ asset('assets/frontend/images/other/comment-1.png') }}" alt="John Doe" />
-                                        </div>
-                                        <div class="details">
-                                            <h4 class="name"><a href="#">{{ $post->title }}</a></h4>
-                                            <span class="date">{{ $post->created_at }}</span>
-                                            <p>{{ $post->content }}</p>
-                                            <a href="#" data-comment-id="3" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</a>
-                                        </div>
-                                    </li>
-
-                                    <li class="comment child rounded mb-15" style="margin-bottom: 30px">
-                                        <div class="thumb">
-                                            <img src="{{ asset('assets/frontend/images/other/comment-1.png') }}" alt="John Doe">
+                                        
+                                    @foreach($post->comments  as $key => $comment)
+                                    
+                                        <!-- comment item -->
+                                        <li class="comment rounded">
+                                            <div class="thumb">
+                                                <img src="{{ asset('assets/frontend/images/other/comment-1.png') }}" alt="John Doe" />
                                             </div>
+                                            <div class="details">
+                                                <h4 class="name"><a href="#">{{ $post->visitor_name }}</a></h4>
+                                                <span class="date">{{ $comment->created_at }}</span>
+                                                <p>{{ $comment->body }}</p>
+                                                <a href="#" data-comment-id="3" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</a>
+                                            </div>
+                                        </li>
+                                        @foreach($comment->replies as $key => $reply)
+                                            <li class="comment child rounded mb-15" style="margin-bottom: 30px">
+                                                <div class="thumb">
+                                                    <img src="{{ asset('assets/frontend/images/other/comment-1.png') }}" alt="John Doe">
+                                                </div>
                                                 <div class="details">
-                                                    <h4 class="name"><a href="#">Taya</a></h4>
-                                                    <span class="date">23 March 2022</span>
-                                                    <p>Vel iure delectus At nihil natus qui eaque repudiandae aut error recusandae. Eum nulla aut animi aliquam ut voluptates labore.</p>
+                                                    <h4 class="name"><a href="#">{{ $reply->visitor_name }}</a></h4>
+                                                    <span class="date">{{ $reply->created_at }}</span>
+                                                    <p>{{ $reply->body }}</p>
                                                     <a href="#"  data-comment-id="3" class="btn btn-default btn-sm">Reply</a>
                                                 </div>
-                                    </li>
-                                    <li class="comment child rounded mb-15" style="margin-bottom: 30px">
-                                        <div class="thumb">
-                                            <img src="{{ asset('assets/frontend/images/other/comment-1.png') }}" alt="John Doe">
-                                        </div>
-                                        <div class="details">
-                                            <h4 class="name"><a href="#">Timna</a></h4>
-                                            <span class="date">23 March 2022</span>
-                                            <p>ed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum </p>
-                                            <a href="#"  data-comment-id="3" class="btn btn-default btn-sm">Reply</a>
-                                        </div>
-                                    </li>
+                                            </li>
+                                        @endforeach
+                                    @endforeach
+
                                 </ul>
                         </div>
                        

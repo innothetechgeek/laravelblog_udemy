@@ -113,24 +113,11 @@
                             <li class="nav-item dropdown active">
                                 <a class="nav-link dropdown-toggle" href="/">Home</a>
                             </li>
-                                                            <li  class="nav-item">
-                                    <a class="nav-link">Web Development</a>
+                            @foreach($categories as $key => $category)
+                                <li  class="nav-item">
+                                    <a class="nav-link">{{ $category->name }}</a>
                                 </li>
-                                                            <li  class="nav-item">
-                                    <a class="nav-link">Fashion</a>
-                                </li>
-                                                            <li  class="nav-item">
-                                    <a class="nav-link">Inspiration</a>
-                                </li>
-                                                            <li  class="nav-item">
-                                    <a class="nav-link">Vacation</a>
-                                </li>
-                                                            <li  class="nav-item">
-                                    <a class="nav-link">Worship</a>
-                                </li>
-                                                        <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
 
@@ -181,21 +168,26 @@
                                             </span>
                                             <a href="{{ url('post/details') }}/{{$post->id}}">
                                                 <div class="inner">
-                                                    <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
+                                                    @if($post->image)
+                                                        <img src='{{ asset("post_images/$post->image")}}' alt="post-title" />
+                                                    @else
+                                                        <img src='{{ asset("assets/frontend/images/posts/post-md-2.jpg")}}' alt="post-title" />
+                                                    @endif
+                                                    
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="details">
                                             <ul class="meta list-inline mb-0">
                                                 <li class="list-inline-item">
-                                                    <a href="#"><img src='{{ asset("post_images/$post->image")}}' class="author" alt="author" />Katen Doe</a>
+                                                    <a href="#"><img src='{{ asset("assets/frontend/images/other/author-sm.png") }}' class="author" alt="author" />Katen Doe</a>
                                                 </li>
                                                 <li class="list-inline-item">29 March 2021</li>
                                             </ul>
                                             <h5 class="post-title mb-3 mt-3">
                                                 <a href="{{ url('post/details') }}/{{$post->id}}">{{$post->title}}</a>
                                             </h5>
-                                            <p class="excerpt mb-0">  sdf ... </p>
+                                            <p class="excerpt mb-0"> sdf ... </p>
                                         </div>
                                         <div class="post-bottom clearfix d-flex align-items-center">
                                             <div class="social-share me-auto">

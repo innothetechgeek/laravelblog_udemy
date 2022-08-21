@@ -9,4 +9,12 @@ class Comment extends Model
     //
 
     protected $table ='comments';
+
+    public function replies(){
+
+        return $this->hasMany(Reply::class);
+    
+    }
+    
 }
+

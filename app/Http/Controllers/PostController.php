@@ -28,17 +28,23 @@ class PostController extends Controller
 
     public function uploadImage(Request $request){
 
-        $path = public_path("post_images");
+        $fileName = '';
+        if($request->hasFile('post_image')){
 
-        if ( ! file_exists($path) ) {
-            mkdir($path, 0777, true);
+            $path = public_path("post_images");
+
+            if ( ! file_exists($path) ) {
+                mkdir($path, 0777, true);
+            }
+
+            $file = $request->file('post_image');
+
+            $fileName = uniqid() . '_' . trim($file->getClientOriginalName());
+
+            $full_path = $file->move($path,$fileName);
+
+            return $fileName;
         }
-
-        $file = $request->file('post_image');
-
-        $fileName = uniqid() . '_' . trim($file->getClientOriginalName());
-
-        $full_path = $file->move($path,$fileName);
 
         return $fileName;
 
@@ -55,7 +61,8 @@ class PostController extends Controller
     public function index(){
 
         $posts  = Post::all();
-        return view('index',compact('posts'));
+        $categories = Category::All();
+        return view('index',compact('posts','categories'));
         
     }
 
@@ -78,9 +85,12 @@ class PostController extends Controller
 
     public function update(Request $request,$id){
 
+        $image_name = $this->uploadImage($request);
+
         $post = Post::find($id);
         $post->title = $request->post_title;
         $post->category_id  = $request->category_id;
+        $post->image = $image_name;
         $post->content = $request->post_content;
         $post->save();
 
@@ -96,4 +106,23 @@ class PostController extends Controller
         return back()->with(['message'=>'post updated successfully!']);
     }
 
+    public function markAsFeatured($id){
+
+        $post = Post::find($id);
+        $post->is_featured = 1;
+        $post->save();
+
+        return back()->with(['message'=>'post updated successfully!']);
+
+    }
+
+    public function markAsUnfeatured($id){
+
+        $post = Post::find($id);
+        $post->is_featured = 0;
+        $post->save();
+
+        return back()->with(['message'=>'post updated successfully!']);
+
+    }
 }
