@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ asset('assets/backend/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/backend/css/argon.css?v=1.2.0') }}" type="text/css">
+ 
 </head>
 
 <style>
@@ -366,7 +367,7 @@
                                                 </div>
                                             </th>
                                             <td class="budget" >
-                                                {{ $post->content }}
+                                                {{ substr($post->content,0,15) }} ...
                                             </td>
                                             <td>
                                                 <span class="badge badge-dot mr-4">

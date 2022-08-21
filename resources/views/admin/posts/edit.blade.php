@@ -399,6 +399,30 @@
             plainPaste: true
         });
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-toast-notification"></script>
+    <link href="https://cdn.jsdelivr.net/npm/vue-toast-notification/dist/theme-sugar.css" rel="stylesheet">
+
+    <script>
+          var editor = new FroalaEditor('#postContent',{heightMin: 350});
+    </script>
+
+    <script>
+        Vue.use(VueToast);
+    </script>
+
+        <?php if(session()->has('message')) {?>
+
+            <script>
+                var successMessage = "<?= Session::get('message') ?>";
+                Vue.$toast.success(successMessage, {
+                    // override the global option
+                    position: 'bottom-left'
+                })
+            </script>
+
+        <?php } ?>
 </body>
 
 </html>

@@ -216,18 +216,38 @@
     </div>
     <!-- Argon Scripts -->
     <!-- Core -->
-    <script src="../assets/backend/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/plugins/froala/js/froala_editor.pkgd.min.js"></script>
-    <script src="../assets/backend/vendor/bootstrap/dist/js/bootstrap.bundle.min.js "></script>
-    <script src="../assets/backend/vendor/js-cookie/js.cookie.js "></script>
-    <script src="../assets/backend/vendor/jquery.scrollbar/jquery.scrollbar.min.js "></script>
-    <script src="../assets/backend/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js "></script>
+    <script src="{{ asset('assets/backend/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/froala/js/froala_editor.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/backend/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }} "></script>
+    <script src="{{ asset('assets/backend/vendor/js-cookie/js.cookie.js') }} "></script>
+    <script src="{{ asset('assets/backend/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }} "></script>
+    <script src="{{ asset('assets/backend/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }} "></script>
     <!-- Argon JS -->
     <script src="../assets/backend/js/argon.js?v=1.2.0 "></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-toast-notification"></script>
+    <link href="https://cdn.jsdelivr.net/npm/vue-toast-notification/dist/theme-sugar.css" rel="stylesheet">
 
     <script>
           var editor = new FroalaEditor('#postContent',{heightMin: 350});
     </script>
+
+    <script>
+        Vue.use(VueToast);
+    </script>
+
+        <?php if(session()->has('message')) {?>
+
+            <script>
+                var successMessage = "<?= Session::get('message') ?>";
+                Vue.$toast.success(successMessage, {
+                    // override the global option
+                    position: 'bottom-left'
+                })
+            </script>
+
+        <?php } ?>
 </body>
 
 </html>

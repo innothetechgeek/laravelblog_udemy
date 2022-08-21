@@ -19,6 +19,7 @@ use App\Http\Controllers\CommentController;
 Route::get('/', [PostController::class, 'index']);
 
 Route::get('post/details/{id}', [PostController::class,'show']);
+Route::post('comment/reply/add/{id}', [CommentController::class,'addReply']);
 
 Route::get('login', function(){
     return view('login');
