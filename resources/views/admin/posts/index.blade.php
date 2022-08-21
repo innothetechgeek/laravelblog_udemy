@@ -86,7 +86,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../categories/">
+                            <a class="nav-link" href="{{ url('admin/categories') }}">
                                 <i class="ni fa fa-list-alt text-default"></i>
                                 <span class="nav-link-text">Categories</span>
                             </a>
@@ -319,7 +319,7 @@
                             </nav>
                         </div>
                         <div class="col-lg-6 col-5 text-right">
-                            <a href="add.php" class="btn btn-sm btn-neutral">Add New</a>
+                            <a href="{{ url('admin/post/add')}}" class="btn btn-sm btn-neutral">Add New</a>
                         </div>
                     </div>
                 </div>
@@ -349,19 +349,20 @@
                                     </tr>
                                 </thead>
                                 <tbody class="list">
-                                                                           <tr>
+                                    @foreach($posts as $key => $post)
+                                        <tr>
                                             <th scope="row">
                                                 <div class="media align-items-center">
                                                     <a href="#" class="avatar  mr-3">
                                                         <img width = '60' height = '48' src="../../post_images/post_19/alesia-kazantceva-VWcPlbHglYc-unsplash.jpg" />
                                                     </a>
                                                     <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Another movie title</span>
+                                                        <span class="name mb-0 text-sm">{{$post->title}}</span>
                                                     </div>
                                                 </div>
                                             </th>
                                             <td class="budget" >
-                                                                                                sdf ...
+                                                {{ $post->content }}
                                             </td>
                                             <td>
                                                 <span class="badge badge-dot mr-4">
@@ -372,11 +373,12 @@
                                             <td style="column-width: 50px;">
                                             <span class="badge badge-dot mr-4">
                                                 <i class="bg-success"></i>
-                                                                                                <span class="status">Yes</span>
+                                                    <span class="status">Yes</span>
                                                 </span>
                                             </td>
                                             <td style="column-width: 80px;">
-                                                Vacation                                            </td>
+                                                Vacation 
+                                            </td>
                                             <td class="text-right">
                                                 <div class="dropdown">
                                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -384,308 +386,15 @@
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                         <a class="dropdown-item" href="{{ url('post/edit') }}/1">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                        <a class="dropdown-item" href="{{ url('post/delete') }}/{{$post->id}}">Delete</a>
                                                         <a class="dropdown-item" href="?action=mark-as-featured&post-id=19">Mark as featured</a>
                                                         <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=19">Mark as unfeatured</a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-                                                                            <tr>
-                                            <th scope="row">
-                                                <div class="media align-items-center">
-                                                    <a href="#" class="avatar  mr-3">
-                                                        <img width = '60' height = '48' src="../../post_images/post_18/toa-heftiba-FV3GConVSss-unsplash.jpg" />
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">This is a test tile</span>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="budget" >
-                                                                                                sdf ...
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <i class=""></i>
-                                                <span class="status">2</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 50px;">
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                                                                <span class="status">No</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 80px;">
-                                                Web Development                                            </td>
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=18">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-featured&post-id=18">Mark as featured</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=18">Mark as unfeatured</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                                                            <tr>
-                                            <th scope="row">
-                                                <div class="media align-items-center">
-                                                    <a href="#" class="avatar  mr-3">
-                                                        <img width = '60' height = '48' src="../../post_images/post_17/clayton-malquist-P2iaN5Kqk-4-unsplash.jpg" />
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">test test</span>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="budget" >
-                                                                                                sdfsdf ...
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <i class=""></i>
-                                                <span class="status">0</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 50px;">
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                                                                <span class="status">No</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 80px;">
-                                                Inspiration                                            </td>
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=17">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-featured&post-id=17">Mark as featured</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=17">Mark as unfeatured</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                                                            <tr>
-                                            <th scope="row">
-                                                <div class="media align-items-center">
-                                                    <a href="#" class="avatar  mr-3">
-                                                        <img width = '60' height = '48' src="../../post_images/post_16/forest-simon-OLOZGO5NjpY-unsplash.jpg" />
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Test</span>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="budget" >
-                                                                                                Test ...
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <i class=""></i>
-                                                <span class="status">0</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 50px;">
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                                                                <span class="status">Yes</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 80px;">
-                                                Web Development                                            </td>
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=16">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-featured&post-id=16">Mark as featured</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=16">Mark as unfeatured</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                                                            <tr>
-                                            <th scope="row">
-                                                <div class="media align-items-center">
-                                                    <a href="#" class="avatar  mr-3">
-                                                        <img width = '60' height = '48' src="../../post_images/post_15/prince-oamil-YbOGL8o1Yz8-unsplash.jpg" />
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Oceans</span>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="budget" >
-                                                                                                Oceans where th ...
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <i class=""></i>
-                                                <span class="status">0</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 50px;">
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                                                                <span class="status">Yes</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 80px;">
-                                                Web Development                                            </td>
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=15">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-featured&post-id=15">Mark as featured</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=15">Mark as unfeatured</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                                                            <tr>
-                                            <th scope="row">
-                                                <div class="media align-items-center">
-                                                    <a href="#" class="avatar  mr-3">
-                                                        <img width = '60' height = '48' src="../../post_images/post_14/hillshire-farm-TWy3jXvtDdc-unsplash.jpg" />
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">This is test title</span>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="budget" >
-                                                                                                Test titleDonec ...
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <i class=""></i>
-                                                <span class="status">0</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 50px;">
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                                                                <span class="status">Yes</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 80px;">
-                                                Inspiration                                            </td>
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=14">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-featured&post-id=14">Mark as featured</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=14">Mark as unfeatured</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                                                            <tr>
-                                            <th scope="row">
-                                                <div class="media align-items-center">
-                                                    <a href="#" class="avatar  mr-3">
-                                                        <img width = '60' height = '48' src="../../post_images/post_13/tyler-nix-_nA3wE8LCw8-unsplash.jpg" />
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Visited Cape Town late at night</span>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="budget" >
-                                                                                                luctus est. Dui ...
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <i class=""></i>
-                                                <span class="status">0</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 50px;">
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                                                                <span class="status">No</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 80px;">
-                                                Web Development                                            </td>
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=13">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-featured&post-id=13">Mark as featured</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=13">Mark as unfeatured</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                                                            <tr>
-                                            <th scope="row">
-                                                <div class="media align-items-center">
-                                                    <a href="#" class="avatar  mr-3">
-                                                        <img width = '60' height = '48' src="../../post_images/post_12/asia-culturecenter-YgFUJ4Ef2EY-unsplash.jpg" />
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Cumque facere odio s</span>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <td class="budget" >
-                                                                                                Donec pulvinar  ...
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <i class=""></i>
-                                                <span class="status">0</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 50px;">
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i>
-                                                                                                <span class="status">No</span>
-                                                </span>
-                                            </td>
-                                            <td style="column-width: 80px;">
-                                                Fashion                                            </td>
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=12">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-featured&post-id=12">Mark as featured</a>
-                                                        <a class="dropdown-item" href="?action=mark-as-unfeatured&post-id=12">Mark as unfeatured</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                                                    </tbody>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                         <!-- Card footer -->

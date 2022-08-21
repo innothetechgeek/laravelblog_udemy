@@ -29,11 +29,11 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
-    <link rel="stylesheet" href="../../assets/backend/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="../../assets/backend/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/backend/vendor/nucleo/css/nucleo.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/backend/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="../../assets/backend/css/argon.css?v=1.2.0" type="text/css">
-    <link rel="stylesheet" href="../../assets/plugins/froala/css/froala_editor.pkgd.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/argon.css?v=1.2.0') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/froala/css/froala_editor.pkgd.min.css') }}" type="text/css">
     <style>
         #fr-logo {
             display: none;
@@ -349,7 +349,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action ="" method ="POST" enctype="multipart/form-data">
+                            <form action ="{{ url('admin/category/store') }}" method ="POST" enctype="multipart/form-data">
+                                @csrf
                                 <h6 class="heading-small text-muted mb-4">Category Information</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
@@ -365,7 +366,7 @@
                                     <div class="row">
                                         <div class="col-lg-10 mt-6">
                                             <div class="d-flex mt-3 justify-content-end">
-                                                <a href="index.php" class="btn btn-secondary">Back</a>
+                                                <a href="{{ url('admin/categories') }}" class="btn btn-secondary">Back</a>
                                                 <button type="submit" class="btn btn-success">Add Category</button>
                                             </div> 
                                         </div>
@@ -406,14 +407,14 @@
     </div>
     <!-- Argon Scripts -->
     <!-- Core -->
-    <script src="../../assets/backend/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../../assets/plugins/froala/js/froala_editor.pkgd.min.js"></script>
-    <script src="../../assets/backend/vendor/bootstrap/dist/js/bootstrap.bundle.min.js "></script>
-    <script src="../../assets/backend/vendor/js-cookie/js.cookie.js "></script>
-    <script src="../../assets/backend/vendor/jquery.scrollbar/jquery.scrollbar.min.js "></script>
-    <script src="../../assets/backend/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js "></script>
+    <script src="{{ asset('assets/backend/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/froala/js/froala_editor.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/backend/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }} "></script>
+    <script src="{{ asset('assets/backend/vendor/js-cookie/js.cookie.js') }}"></script>
+    <script src="{{ asset('assets/backend/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }} "></script>
+    <script src="{{ asset('assets/backend/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
     <!-- Argon JS -->
-    <script src="../../assets/backend/js/argon.js?v=1.2.0 "></script>
+    <script src="{{ asset('assets/backend/js/argon.js?v=1.2.0') }} "></script>
 
     <script>
           var editor = new FroalaEditor('#postContent',{heightMin: 350});

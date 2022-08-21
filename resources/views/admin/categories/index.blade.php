@@ -24,14 +24,14 @@
     <meta name="author" content="Creative Tim">
     <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
     <!-- Favicon -->
-    <link rel="icon" href="../../assets/backend/img/brand/favicon.png" type="image/png">
+    <link rel="icon" href="{{ asset('assets/backend/img/brand/favicon.png') }}" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
-    <link rel="stylesheet" href="../../assets/backend/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="../../assets/backend/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/backend/vendor/nucleo/css/nucleo.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/backend/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="../../assets/backend/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/argon.css?v=1.2.0') }}" type="text/css">
 </head>
 
 <body>
@@ -156,7 +156,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <img alt="Image placeholder" src="../assets/backend/img/theme/team-2.jpg" class="avatar rounded-circle">
+                                                <img alt="Image placeholder" src="{{ asset('assets/backend/img/theme/team-2.jpg') }}" class="avatar rounded-circle">
                                             </div>
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
@@ -175,7 +175,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <img alt="Image placeholder" src="../assets/backend/img/theme/team-3.jpg" class="avatar rounded-circle">
+                                                <img alt="Image placeholder" src="{{ asset('assets/backend/img/theme/team-3.jpg') }}" class="avatar rounded-circle">
                                             </div>
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
@@ -194,7 +194,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <img alt="Image placeholder" src="../assets/backend/img/theme/team-4.jpg" class="avatar rounded-circle">
+                                                <img alt="Image placeholder" src="{{ asset('assets/backend/img/theme/team-4.jpg') }}" class="avatar rounded-circle">
                                             </div>
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
@@ -213,7 +213,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <img alt="Image placeholder" src="../assets/backend/img/theme/team-5.jpg" class="avatar rounded-circle">
+                                                <img alt="Image placeholder" src="{{ asset('assets/backend/img/theme/team-5.jpg') }}" class="avatar rounded-circle">
                                             </div>
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
@@ -341,7 +341,7 @@
                                     </nav>
                                 </div>                            
                                 <div class="col-4 text-right justify-content-center mt-3">
-                                    <a href="add.php" class="btn btn-sm btn-neutral">Add New</a>
+                                    <a href="{{ url('admin/category/add') }}" class="btn btn-sm btn-neutral">Add New</a>
                                 </div>
                             </div>
                         </div>                       
@@ -368,9 +368,10 @@
                                     </tr>
                                 </thead>
                                 <tbody class="list">
+                                    @foreach($categories  as $key => $category)
                                         <tr>
                                             <td class="budget">
-                                                Web Development
+                                                 {{$category->name}}
                                             </td>                                          
 
                                             <td>
@@ -380,90 +381,12 @@
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                         <a class="dropdown-item" href="edit.php?post-id=?>">Edit</a>
-                                                        <a class="dropdown-item" href="#">Mark as featured</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                        <a class="dropdown-item" href="{{ url('admin/category/delete')}}/{{$category->id}}">Delete</a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="budget">
-                                               Fashion
-                                            </td>                                          
-
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=?>">Edit</a>
-                                                        <a class="dropdown-item" href="#">Mark as featured</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="budget">
-                                                Networking
-                                            </td>                                          
-
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=?>">Edit</a>
-                                                        <a class="dropdown-item" href="#">Mark as featured</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="budget">
-                                                Health Wealness
-                                            </td>                                          
-
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=?>">Edit</a>
-                                                        <a class="dropdown-item" href="#">Mark as featured</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="budget">
-                                               Tourism
-                                            </td>                                          
-
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="edit.php?post-id=?>">Edit</a>
-                                                        <a class="dropdown-item" href="#">Mark as featured</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

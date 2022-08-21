@@ -141,92 +141,25 @@
         <section class="hero-carousel">
             
             <div class="row post-carousel-featured post-carousel">
-                                    
+                @foreach($posts as $key => $post)               
                     <!-- post -->
                     <div class="post featured-post-md">
                         <div class="details clearfix">
                             <a href="category.html" class="category-badge"> Vacation</a>
-                            <h4 class="post-title"><a href=''>Another movie title</a></h4>
+                            <h4 class="post-title"><a href=''>{{$post->title}}</a></h4>
                             <ul class="meta list-inline mb-0">
                                 <li class="list-inline-item"><a href="#">Katen Doe</a></li>
-                                <li class="list-inline-item">2021-09-18 12:46:22</li>
+                                <li class="list-inline-item">{{$post->created_at}}</li>
                             </ul>
                         </div>
-                        <a href=''>
+                        <a href="{{ url('post-details') }}/$post->id">
                             <div class="thumb rounded">
-                                <div class="inner data-bg-image" data-bg-image="assets/frontend/images/posts/featured-md-4.jpg"></div>
+                                <div class="inner data-bg-image" data-bg-image="{{ asset('post_images/$post->image')}}"></div>
                             </div>
                         </a>
                     </div>
-                                    
-                    <!-- post -->
-                    <div class="post featured-post-md">
-                        <div class="details clearfix">
-                            <a href="category.html" class="category-badge"> Web Development</a>
-                            <h4 class="post-title"><a href=''>Test</a></h4>
-                            <ul class="meta list-inline mb-0">
-                                <li class="list-inline-item"><a href="#">Katen Doe</a></li>
-                                <li class="list-inline-item">2021-09-18 12:46:54</li>
-                            </ul>
-                        </div>
-                        <a href=''>
-                            <div class="thumb rounded">
-                                <div class="inner data-bg-image" data-bg-image="assets/frontend/images/posts/featured-md-4.jpg"></div>
-                            </div>
-                        </a>
-                    </div>
-                                    
-                    <!-- post -->
-                    <div class="post featured-post-md">
-                        <div class="details clearfix">
-                            <a href="category.html" class="category-badge"> Web Development</a>
-                            <h4 class="post-title"><a href=''>Oceans</a></h4>
-                            <ul class="meta list-inline mb-0">
-                                <li class="list-inline-item"><a href="#">Katen Doe</a></li>
-                                <li class="list-inline-item">2021-09-18 12:46:53</li>
-                            </ul>
-                        </div>
-                        <a href=''>
-                            <div class="thumb rounded">
-                                <div class="inner data-bg-image" data-bg-image="assets/frontend/images/posts/featured-md-4.jpg"></div>
-                            </div>
-                        </a>
-                    </div>
-                                    
-                    <!-- post -->
-                    <div class="post featured-post-md">
-                        <div class="details clearfix">
-                            <a href="category.html" class="category-badge"> Inspiration</a>
-                            <h4 class="post-title"><a href=''>This is test title</a></h4>
-                            <ul class="meta list-inline mb-0">
-                                <li class="list-inline-item"><a href="#">Katen Doe</a></li>
-                                <li class="list-inline-item">2021-09-18 12:46:52</li>
-                            </ul>
-                        </div>
-                        <a href='post-details.php.html'>
-                            <div class="thumb rounded">
-                                <div class="inner data-bg-image" data-bg-image="assets/frontend/images/posts/featured-md-4.jpg"></div>
-                            </div>
-                        </a>
-                    </div>
-                                    
-                    <!-- post -->
-                    <div class="post featured-post-md">
-                        <div class="details clearfix">
-                            <a href="category.html" class="category-badge"> Fashion</a>
-                            <h4 class="post-title"><a href='/post-details.html'>Cumque facere odio s</a></h4>
-                            <ul class="meta list-inline mb-0">
-                                <li class="list-inline-item"><a href="#">Katen Doe</a></li>
-                                <li class="list-inline-item">2021-09-18 12:46:51</li>
-                            </ul>
-                        </div>
-                        <a href=''>
-                            <div class="thumb rounded">
-                                <div class="inner data-bg-image" data-bg-image="assets/frontend/images/posts/featured-md-4.jpg"></div>
-                            </div>
-                        </a>
-                    </div>
-                            </div>
+                @endforeach
+            </div>
         </section>
 
         <!-- section main content -->
@@ -237,7 +170,8 @@
 
                     <div class="col-lg-8">
                         <div class="row gy-4">
-                                                            <div class="col-sm-6">
+                        @foreach($posts as $key => $post)
+                            <div class="col-sm-6">
                                     <!-- post -->
                                     <div class="post post-grid rounded bordered" data-aos="fade-up" data-aos-offset="220" data-aos-duration ="1000">
                                         <div class="thumb top-rounded">
@@ -245,7 +179,7 @@
                                             <span class="post-format">
                                             <i class="icon-picture"></i>
                                             </span>
-                                            <a href="post-details.html">
+                                            <a href="{{ url('post/details') }}/{{$post->id}}">
                                                 <div class="inner">
                                                     <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
                                                 </div>
@@ -254,14 +188,14 @@
                                         <div class="details">
                                             <ul class="meta list-inline mb-0">
                                                 <li class="list-inline-item">
-                                                    <a href="#"><img src="assets/frontend/images/other/author-sm.png" class="author" alt="author" />Katen Doe</a>
+                                                    <a href="#"><img src='{{ asset("post_images/$post->image")}}' class="author" alt="author" />Katen Doe</a>
                                                 </li>
                                                 <li class="list-inline-item">29 March 2021</li>
                                             </ul>
                                             <h5 class="post-title mb-3 mt-3">
-                                                <a href="post-details.html">Another movie title</a>
+                                                <a href="{{ url('post/details') }}/{{$post->id}}">{{$post->title}}</a>
                                             </h5>
-                                                                                        <p class="excerpt mb-0">  sdf ... </p>
+                                            <p class="excerpt mb-0">  sdf ... </p>
                                         </div>
                                         <div class="post-bottom clearfix d-flex align-items-center">
                                             <div class="social-share me-auto">
@@ -276,321 +210,14 @@
                                                 </ul>
                                             </div>
                                             <div class="more-button float-end">
-                                                <a href="post-details.html"><span class="icon-options"></span></a>
+                                                <a href="{{ url('post/details') }}/{{$post->id}}"><span class="icon-options"></span></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                                            <div class="col-sm-6">
-                                    <!-- post -->
-                                    <div class="post post-grid rounded bordered" data-aos="fade-up" data-aos-offset="220" data-aos-duration ="1000">
-                                        <div class="thumb top-rounded">
-                                            <a href="category.html" class="category-badge position-absolute">Web Development</a>
-                                            <span class="post-format">
-                                            <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="post-details.html">
-                                                <div class="inner">
-                                                    <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="meta list-inline mb-0">
-                                                <li class="list-inline-item">
-                                                    <a href="#"><img src="assets/frontend/images/other/author-sm.png" class="author" alt="author" />Katen Doe</a>
-                                                </li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title mb-3 mt-3">
-                                                <a href="post-details.html">This is a test tile</a>
-                                            </h5>
-                                                                                        <p class="excerpt mb-0">  sdf ... </p>
-                                        </div>
-                                        <div class="post-bottom clearfix d-flex align-items-center">
-                                            <div class="social-share me-auto">
-                                                <button class="toggle-button icon-share"></button>
-                                                <ul class="icons list-unstyled list-inline mb-0">
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="more-button float-end">
-                                                <a href="post-details.html"><span class="icon-options"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="col-sm-6">
-                                    <!-- post -->
-                                    <div class="post post-grid rounded bordered" data-aos="fade-up" data-aos-offset="220" data-aos-duration ="1000">
-                                        <div class="thumb top-rounded">
-                                            <a href="category.html" class="category-badge position-absolute">Inspiration</a>
-                                            <span class="post-format">
-                                            <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="post-details.html">
-                                                <div class="inner">
-                                                    <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="meta list-inline mb-0">
-                                                <li class="list-inline-item">
-                                                    <a href="#"><img src="assets/frontend/images/other/author-sm.png" class="author" alt="author" />Katen Doe</a>
-                                                </li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title mb-3 mt-3">
-                                                <a href="post-details.php?post-id=17">test test</a>
-                                            </h5>
-                                                                                        <p class="excerpt mb-0">  sdfsdf ... </p>
-                                        </div>
-                                        <div class="post-bottom clearfix d-flex align-items-center">
-                                            <div class="social-share me-auto">
-                                                <button class="toggle-button icon-share"></button>
-                                                <ul class="icons list-unstyled list-inline mb-0">
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="more-button float-end">
-                                                <a href="post-details.html"><span class="icon-options"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="col-sm-6">
-                                    <!-- post -->
-                                    <div class="post post-grid rounded bordered" data-aos="fade-up" data-aos-offset="220" data-aos-duration ="1000">
-                                        <div class="thumb top-rounded">
-                                            <a href="category.html" class="category-badge position-absolute">Web Development</a>
-                                            <span class="post-format">
-                                            <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="post-details.php?post-id=16">
-                                                <div class="inner">
-                                                    <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="meta list-inline mb-0">
-                                                <li class="list-inline-item">
-                                                    <a href="#"><img src="assets/frontend/images/other/author-sm.png" class="author" alt="author" />Katen Doe</a>
-                                                </li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title mb-3 mt-3">
-                                                <a href="post-details.php?post-id=16">Test</a>
-                                            </h5>
-                                                                                        <p class="excerpt mb-0">  Test ... </p>
-                                        </div>
-                                        <div class="post-bottom clearfix d-flex align-items-center">
-                                            <div class="social-share me-auto">
-                                                <button class="toggle-button icon-share"></button>
-                                                <ul class="icons list-unstyled list-inline mb-0">
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="more-button float-end">
-                                                <a href="post-details.html"><span class="icon-options"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="col-sm-6">
-                                    <!-- post -->
-                                    <div class="post post-grid rounded bordered" data-aos="fade-up" data-aos-offset="220" data-aos-duration ="1000">
-                                        <div class="thumb top-rounded">
-                                            <a href="category.html" class="category-badge position-absolute">Web Development</a>
-                                            <span class="post-format">
-                                            <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="post-details.php?post-id=15">
-                                                <div class="inner">
-                                                    <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="meta list-inline mb-0">
-                                                <li class="list-inline-item">
-                                                    <a href="#"><img src="assets/frontend/images/other/author-sm.png" class="author" alt="author" />Katen Doe</a>
-                                                </li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title mb-3 mt-3">
-                                                <a href="post-details.php?post-id=15">Oceans</a>
-                                            </h5>
-                                                                                        <p class="excerpt mb-0">  Oceans where the feet may fail.Where the feet may fail where ... </p>
-                                        </div>
-                                        <div class="post-bottom clearfix d-flex align-items-center">
-                                            <div class="social-share me-auto">
-                                                <button class="toggle-button icon-share"></button>
-                                                <ul class="icons list-unstyled list-inline mb-0">
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="more-button float-end">
-                                                <a href="post-details.html"><span class="icon-options"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="col-sm-6">
-                                    <!-- post -->
-                                    <div class="post post-grid rounded bordered" data-aos="fade-up" data-aos-offset="220" data-aos-duration ="1000">
-                                        <div class="thumb top-rounded">
-                                            <a href="category.html" class="category-badge position-absolute">Inspiration</a>
-                                            <span class="post-format">
-                                            <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="post-details.php?post-id=14">
-                                                <div class="inner">
-                                                    <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="meta list-inline mb-0">
-                                                <li class="list-inline-item">
-                                                    <a href="#"><img src="assets/frontend/images/other/author-sm.png" class="author" alt="author" />Katen Doe</a>
-                                                </li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title mb-3 mt-3">
-                                                <a href="post-details.php?post-id=14">This is test title</a>
-                                            </h5>
-                                                                                        <p class="excerpt mb-0">  Test titleDonec pulvinar elit et purus scelerisque volutpat. ... </p>
-                                        </div>
-                                        <div class="post-bottom clearfix d-flex align-items-center">
-                                            <div class="social-share me-auto">
-                                                <button class="toggle-button icon-share"></button>
-                                                <ul class="icons list-unstyled list-inline mb-0">
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="more-button float-end">
-                                                <a href="post-details.html"><span class="icon-options"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="col-sm-6">
-                                    <!-- post -->
-                                    <div class="post post-grid rounded bordered" data-aos="fade-up" data-aos-offset="220" data-aos-duration ="1000">
-                                        <div class="thumb top-rounded">
-                                            <a href="category.html" class="category-badge position-absolute">Web Development</a>
-                                            <span class="post-format">
-                                            <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="post-details.php?post-id=13">
-                                                <div class="inner">
-                                                    <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="meta list-inline mb-0">
-                                                <li class="list-inline-item">
-                                                    <a href="#"><img src="assets/frontend/images/other/author-sm.png" class="author" alt="author" />Katen Doe</a>
-                                                </li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title mb-3 mt-3">
-                                                <a href="post-details.php?post-id=13">Visited Cape Town late at night</a>
-                                            </h5>
-                                                                                        <p class="excerpt mb-0">  luctus est. Duis finibus massa eu nibh vulputate,&nbsp;eu sc ... </p>
-                                        </div>
-                                        <div class="post-bottom clearfix d-flex align-items-center">
-                                            <div class="social-share me-auto">
-                                                <button class="toggle-button icon-share"></button>
-                                                <ul class="icons list-unstyled list-inline mb-0">
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="more-button float-end">
-                                                <a href="post-details.html"><span class="icon-options"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="col-sm-6">
-                                    <!-- post -->
-                                    <div class="post post-grid rounded bordered" data-aos="fade-up" data-aos-offset="220" data-aos-duration ="1000">
-                                        <div class="thumb top-rounded">
-                                            <a href="category.html" class="category-badge position-absolute">Fashion</a>
-                                            <span class="post-format">
-                                            <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="post-details.php?post-id=12">
-                                                <div class="inner">
-                                                    <img src="assets/frontend/images/posts/post-md-2.jpg" alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="meta list-inline mb-0">
-                                                <li class="list-inline-item">
-                                                    <a href="#"><img src="assets/frontend/images/other/author-sm.png" class="author" alt="author" />Katen Doe</a>
-                                                </li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title mb-3 mt-3">
-                                                <a href="post-details.php?post-id=12">Cumque facere odio s</a>
-                                            </h5>
-                                                                                        <p class="excerpt mb-0">  Donec pulvinar elit et purus scelerisque volutpat. Nunc quis ... </p>
-                                        </div>
-                                        <div class="post-bottom clearfix d-flex align-items-center">
-                                            <div class="social-share me-auto">
-                                                <button class="toggle-button icon-share"></button>
-                                                <ul class="icons list-unstyled list-inline mb-0">
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="more-button float-end">
-                                                <a href="post-details.html"><span class="icon-options"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                    </div>
-
+                                @endforeach
+                            </div>
+                       
                     </div>
                     <div class="col-lg-4">
 

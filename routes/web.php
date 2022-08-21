@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +16,9 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [PostController::class, 'index']);
 
-Route::get('post-details/{postid}',function(){
-
-    return view('post-details');
-
-});
+Route::get('post/details/{id}', [PostController::class,'show']);
 
 Route::get('login', function(){
     return view('login');
@@ -38,3 +34,13 @@ Route::post('post/store', [PostController::class, 'store']);
 Route::get('admin/posts', [PostController::class, 'index']);
 Route::get('post/edit/{id}', [PostController::class, 'edit']);
 Route::post('post/update/{id}', [PostController::class, 'update']);
+Route::get('post/delete/{id}',[PostController::class, 'delete']);
+
+/* categories */
+Route::get('admin/categories',[CategoryController::class, 'index']);
+Route::get('admin/category/add',[CategoryController::class, 'add']);
+Route::post('admin/category/store',[CategoryController::class, 'store']);
+Route::get('admin/category/delete/{id}',[CategoryController::class, 'delete']);
+
+/* comments */
+Route::post('comment/store', [CommentController::class,'store']);

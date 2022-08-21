@@ -154,13 +154,13 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-username">Post Category</label>
-                                                                                                <select name="cat_id" class ="form-control">
-                                                                                                            <option value="1">Web Development</option>
-                                                                                                            <option value="2">Fashion</option>
-                                                                                                            <option value="3">Inspiration</option>
-                                                                                                            <option value="4">Vacation</option>
-                                                                                                            <option value="5">Worship</option>
-                                                                                                    </select>
+                                                <select name="category_id" class ="form-control">
+                                                    <option value="1">Web Development</option>
+                                                    <option value="2">Fashion</option>
+                                                    <option value="3">Inspiration</option>
+                                                    <option value="4">Vacation</option>
+                                                    <option value="5">Worship</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex mt-3 justify-content-end">
-                                    <a href="" class="btn btn-secondary">Back</a>
+                                    <a href="{{ url('admin/posts') }}" class="btn btn-secondary">Back</a>
                                     <button type="submit" class="btn btn-success">Add Post</button>
                                 </div>
                             </form>
